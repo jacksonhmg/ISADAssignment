@@ -1,0 +1,18 @@
+converting string to upper or lower case{
+    function name = convertString(String pInputString, boolean checker){
+        if checker is true{
+            pInputString = pInputString.toUpperCase()
+        }
+        else{
+            pInputString = pInputString.toLowerCase()
+        }
+        return pInputString;
+    }
+}
+
+
+Identify whether numeric value are in a given string{
+    function name = numericFilter{
+        
+    }
+}
