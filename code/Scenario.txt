@@ -1,6 +1,6 @@
 converting string to upper or lower case{
     function name = convertString(String pInputString, boolean checker){
-        if checker is true{
+        if checker is true{ //so if the user inputted parameter true
             pInputString = pInputString.toUpperCase()
         }
         else{
@@ -12,7 +12,72 @@ converting string to upper or lower case{
 
 
 Identify whether numeric value are in a given string{
-    function name = numericFilter{
-        
+    function name = numericFilter(String pInputString){
+        char[] charArray = pInputString.toCharArray();
+        int counter = 0;
+        for(int i = 0; i < charArray.length; i ++){
+            if(Character.isDigit(charArray[i])){
+                counter ++;
+            }
+        }
+        print "there are " + counter + " digits in your given string"
+    }
+}
+
+
+Identify where a given string is a valid number or not{
+    function name = numberChecker(String pInputString){
+        x = pInputString.parseInt()
+
+        exception{
+            print not a number!
+        }
+        if(x.isDigit()){
+            return x
+        }
+    }
+}
+
+
+remove any numeric values in a given string and the convert to upper or lower case{
+    function name = removeNConvert(String pInputString, boolean checker){
+        result = "";
+        char [] charArray = pInputString.toCharArray();
+        for(int i = 0; i < charArray.length; i++){
+            if(!(Character.isDigit(charArray[i]))){
+                result += charArray;
+            }
+        }
+        if checker is true{
+            pInputString = pInputString.toUpperCase;
+        }
+        else{
+            pInputString = pInputString.toLowerCase;
+        }
+    }
+}
+
+
+
+meters to feet{
+    function name = metersNFeet(double pInputDoub, boolean checker){
+        if checker is true{ so if the user is choosing to convert meters to feet
+            double result = pInputInt * 3.28
+        }
+        else{
+            double result = pInputInt / 3.28
+        }
+    }
+}
+
+
+centimeters to inches{
+    function name = centiNInches(double pInputDoub, boolean checker){
+        if checker is true{ so if the user is choosing to convert centimeters to inches
+            double result = pInputDoub / 2.54
+        }
+        else{
+            double result = pInputDoub * 2.54
+        }
     }
 }
