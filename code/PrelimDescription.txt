@@ -11,6 +11,14 @@ module: Identify whether numeric values are in a given string
     loop through character array and add +1 to a counter if a character is a numeric value
     print out how many numeric values are in the array
 
+module: Identify whether a given string is a valid number or not
+    function name: numberChecker
+    takes one parameter: pInputString (input by user)
+    parses an integer of the given string
+    if its not an integer itll spit out an error
+    if it is, itll print and tell you
+
+
 module: remove any numeric values from a given array and then convert the string to upper or lower case
     function name: removeNConvert
     takes two parameters: pInputString (input by user) and a boolean checker 
@@ -32,4 +40,4 @@ module: converting centimeters to inches and vice versa
     if the checker is true itll assume the double is in centimeters and will convert to inches (/ 2.54)
     if the checker is false itll assume the double is in inches and will convert to centimeters (* 2.54)
     return the result
-    =
+    
