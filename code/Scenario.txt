@@ -45,16 +45,12 @@ remove any numeric values in a given string and the convert to upper or lower ca
         char [] charArray = pInputString.toCharArray();
         for(int i = 0; i < charArray.length; i++){
             if(!(Character.isDigit(charArray[i]))){
-                result += charArray;
+                result += charArray[i];
             }
         }
-        if checker is true{
-            pInputString = pInputString.toUpperCase;
-        }
-        else{
-            pInputString = pInputString.toLowerCase;
-        }
+        newString = convertString(String.valueOf(result), checker)
     }
+    return newString
 }
 
 
@@ -68,6 +64,7 @@ meters to feet{
             double result = pInputInt / 3.28
         }
     }
+    return result
 }
 
 
