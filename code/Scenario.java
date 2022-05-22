@@ -1,4 +1,4 @@
-package code;
+//package code;
 
 import java.util.*;
 import java.io.*;
@@ -21,23 +21,38 @@ public class Scenario{
             System.out.println("Not a valid input. Try again");
             input = sc.nextInt();
         }
-        String pInputString;
-        boolean checker;
-        double pInputDoub;
+        String pInputString = "";
+        boolean checker = true;
+        boolean checker2 = true;
+        double pInputDoub = 0;
+        double[] valArray = new double[1];
         switch(input){
-            case 1:
+            case 1: case 2: case 4:
                 sc.nextLine();
                 System.out.println("Enter your string: ");
                 pInputString = sc.nextLine();
+            break;
+            case 5: case 6:
+                sc.nextLine();
+                System.out.println("Enter 'true' if you would like to enter your own value to convert or 'false' if you would like to convert the given csv file");
+                checker2 = sc.nextBoolean();
+                if(checker2 == true){
+                    System.out.println("Enter your double: ");
+                    pInputDoub = sc.nextDouble();
+                }
+                else{
+                    valArray = readFile("values.csv");
+                }
+            break;
+        }
+        switch(input){
+            case 1:
                 System.out.println("Enter 'true' to convert to uppercase or 'false' to convert to lower case");
                 checker = sc.nextBoolean();
                 pInputString = convertString(pInputString, checker);
                 System.out.println(pInputString);
             break;
             case 2:
-                sc.nextLine();
-                System.out.println("Enter your string: ");
-                pInputString = sc.nextLine();
                 numericFilter(pInputString);
             break;
             case 3:
@@ -49,40 +64,48 @@ public class Scenario{
                 } catch(NumberFormatException errorDetails){
                     System.out.println("Nope! This is not a valid number. See here: " + errorDetails.getMessage());
                 }
-
             break;
             case 4:
-                sc.nextLine();
-                System.out.println("Enter your string: ");
-                pInputString = sc.nextLine();
                 System.out.println("Enter 'true' to convert to uppercase or 'false' to convert to lower case");
                 checker = sc.nextBoolean();
                 pInputString = removeNConvert(pInputString, checker);
                 System.out.println(pInputString);
             break;
             case 5:
-                sc.nextLine();
-                System.out.println("Enter your double: ");
-                pInputDoub = sc.nextDouble();
                 System.out.println("Enter 'true' to convert meters to feet or 'false' to convert feet to meters");
                 checker = sc.nextBoolean();
-                pInputDoub = metersNFeet(pInputDoub, checker);
-                System.out.println(pInputDoub);
+                if(checker2 == true){
+                    pInputDoub = metersNFeet(pInputDoub, checker);
+                    System.out.println(pInputDoub);
+                }
+                else{
+                    for(int i = 0; i < valArray.length; i++){
+                        pInputDoub = metersNFeet(valArray[i], checker);
+                        System.out.println(pInputDoub);
+                    }
+                }
+                
             break;
             case 6:
-                sc.nextLine();
-                System.out.println("Enter your double: ");
-                pInputDoub = sc.nextDouble();
                 System.out.println("Enter 'true' to convert centimeters to inches or 'false' to convert inches to centimeters");
                 checker = sc.nextBoolean();
-                pInputDoub = centiNInches(pInputDoub, checker);
-                System.out.println(pInputDoub);
+                if(checker2 == true){
+                    pInputDoub = centiNInches(pInputDoub, checker);
+                    System.out.println(pInputDoub);
+                }
+                else{
+                    for(int i = 0; i < valArray.length; i++){
+                        pInputDoub = centiNInches(valArray[i], checker);
+                        System.out.println(pInputDoub);
+                    }
+                }
             break;
             default:
 
             break;
         }
 
+        sc.close();
     }
 
 
@@ -153,6 +176,38 @@ public class Scenario{
         }
 
         return result;
+    }
+
+
+    public static double[] readFile(String pFileName){
+        FileInputStream fileStream = null;
+        InputStreamReader rdr;
+        BufferedReader bufRdr;
+        String line;
+        String[] splitLine;
+        double[] valArray = new double[1];
+        try{
+            fileStream = new FileInputStream(pFileName);
+            rdr = new InputStreamReader(fileStream);
+            bufRdr = new BufferedReader(rdr);
+            line = bufRdr.readLine();
+            splitLine = line.split(" ");
+            valArray = new double[splitLine.length];
+            for(int i=0; i<splitLine.length; i++){
+                valArray[i] = Double.parseDouble(splitLine[i]);
+            }
+        }catch(IOException errorDetails){
+            if(fileStream != null){
+                try{
+                    fileStream.close();
+                }catch(IOException ex2){
+
+                }
+            }
+            System.out.println("An error! " + errorDetails.getMessage());
+        }
+
+    return valArray;
     }
 }
 
