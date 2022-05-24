@@ -62,14 +62,16 @@ public class Scenario{
                 System.out.println(pInputString);
             break;
             case 2:
-                numericFilter(pInputString);
+                int counter = numericFilter(pInputString);
+                System.out.println("There are " + counter + " digits in your given string");
             break;
             case 3:
                 try{
                     sc.nextLine();
                     System.out.println("Enter your string: ");
                     pInputString = sc.nextLine();
-                    numberChecker(pInputString);
+                    double x = numberChecker(pInputString);
+                    System.out.println(x + " is a valid number!");
                 } catch(NumberFormatException errorDetails){
                     System.out.println("Nope! This is not a valid number. See here: " + errorDetails.getMessage());
                 }
@@ -134,7 +136,7 @@ public class Scenario{
         return pInputString;
     }
 
-    public static void numericFilter(String pInputString){
+    public static int numericFilter(String pInputString){
         char[] charArray = pInputString.toCharArray();
         int counter = 0;
         for(int i = 0; i < charArray.length; i++){
@@ -142,14 +144,13 @@ public class Scenario{
                 counter ++;
             }
         }
-
-        System.out.println("There are " + counter + " digits in your given string");
+        return counter;
     }
 
 
-    public static void numberChecker(String pInputString){
+    public static double numberChecker(String pInputString){
         double x = Double.parseDouble(pInputString);
-        System.out.println(x + " is a valid number!");
+        return x;
         
     }
 
