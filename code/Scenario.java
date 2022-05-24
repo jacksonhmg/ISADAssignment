@@ -1,5 +1,18 @@
 //package code;
 
+
+
+
+
+
+//CHANGE TO WRITING TO FILES
+
+
+
+
+
+
+
 import java.util.*;
 import java.io.*;
 
@@ -149,9 +162,12 @@ public class Scenario{
 
 
     public static double numberChecker(String pInputString){
-        double x = Double.parseDouble(pInputString);
-        return x;
-        
+        try{
+            double x = Double.parseDouble(pInputString);
+            return x;
+        }catch (NumberFormatException ex){
+            return -1;
+        }
     }
 
     public static String removeNConvert(String pInputString, boolean checker){
