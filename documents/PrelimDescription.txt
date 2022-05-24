@@ -40,4 +40,22 @@ module: converting centimeters to inches and vice versa
     if the checker is true itll assume the double is in centimeters and will convert to inches (/ 2.54)
     if the checker is false itll assume the double is in inches and will convert to centimeters (* 2.54)
     return the result
+
+
+REVISED MODULE DESCRIPTIONS:
+
+
+module: for reading files
+    function name = readFile
+    takes one parameter: pFileName
+    creates all necessary file reading variables: file stream, InputStreamReader, BufferedReader and something that reads the line of the BufferedReader
+    splits the line using regex (.split)
+    converts the strings from the line into doubles
+    returns the doubles
+
+module: for all menu control
+    function name: main
+    outputs options of menu to user by printing to console
+    takes input from user and uses that to do one of multiple options using the above functions
+    prints the outcome of the users choice to the console
     

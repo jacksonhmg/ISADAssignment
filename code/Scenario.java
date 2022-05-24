@@ -23,7 +23,8 @@ public class Scenario{
         }
         String pInputString = "";
         boolean checker = true;
-        boolean checker2 = true;
+        boolean fileChecker = true;
+        boolean belowZeroChecker = true;
         double pInputDoub = 0;
         double[] valArray = new double[1];
         switch(input){
@@ -35,10 +36,18 @@ public class Scenario{
             case 5: case 6:
                 sc.nextLine();
                 System.out.println("Enter 'true' if you would like to enter your own value to convert or 'false' if you would like to convert the given csv file");
-                checker2 = sc.nextBoolean();
-                if(checker2 == true){
-                    System.out.println("Enter your double: ");
-                    pInputDoub = sc.nextDouble();
+                fileChecker = sc.nextBoolean();
+                if(fileChecker == true){
+                    while(belowZeroChecker == true){
+                        System.out.println("Enter your double: ");
+                        pInputDoub = sc.nextDouble();
+                        if(pInputDoub < 0.0){
+                            System.out.println("Cannot enter a measurement below zero, try again");
+                        }
+                        else{
+                            belowZeroChecker = false;
+                        }
+                    }
                 }
                 else{
                     valArray = readFile("values.csv");
@@ -74,14 +83,17 @@ public class Scenario{
             case 5:
                 System.out.println("Enter 'true' to convert meters to feet or 'false' to convert feet to meters");
                 checker = sc.nextBoolean();
-                if(checker2 == true){
+                if(fileChecker == true){
                     pInputDoub = metersNFeet(pInputDoub, checker);
                     System.out.println(pInputDoub);
                 }
                 else{
                     for(int i = 0; i < valArray.length; i++){
                         pInputDoub = metersNFeet(valArray[i], checker);
-                        System.out.println(pInputDoub);
+                        if(pInputDoub >= 0){
+                            System.out.println(pInputDoub);
+                        }
+                        
                     }
                 }
                 
@@ -89,14 +101,16 @@ public class Scenario{
             case 6:
                 System.out.println("Enter 'true' to convert centimeters to inches or 'false' to convert inches to centimeters");
                 checker = sc.nextBoolean();
-                if(checker2 == true){
+                if(fileChecker == true){
                     pInputDoub = centiNInches(pInputDoub, checker);
                     System.out.println(pInputDoub);
                 }
                 else{
                     for(int i = 0; i < valArray.length; i++){
                         pInputDoub = centiNInches(valArray[i], checker);
-                        System.out.println(pInputDoub);
+                        if(pInputDoub >= 0){
+                            System.out.println(pInputDoub);
+                        }
                     }
                 }
             break;
@@ -210,4 +224,3 @@ public class Scenario{
     return valArray;
     }
 }
-
