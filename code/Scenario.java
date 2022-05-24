@@ -1,18 +1,5 @@
 //package code;
 
-
-
-
-
-
-//CHANGE TO WRITING TO FILES
-
-
-
-
-
-
-
 import java.util.*;
 import java.io.*;
 
@@ -36,7 +23,7 @@ public class Scenario{
         }
         String pInputString = "";
         boolean checker = true;
-        boolean fileChecker = true;
+        boolean enterChecker = true;
         boolean belowZeroChecker = true;
         double pInputDoub = 0;
         double[] valArray = new double[1];
@@ -49,8 +36,8 @@ public class Scenario{
             case 5: case 6:
                 sc.nextLine();
                 System.out.println("Enter 'true' if you would like to enter your own value to convert or 'false' if you would like to convert the given csv file");
-                fileChecker = sc.nextBoolean();
-                if(fileChecker == true){
+                enterChecker = sc.nextBoolean();
+                if(enterChecker == true){
                     while(belowZeroChecker == true){
                         System.out.println("Enter your double: ");
                         pInputDoub = sc.nextDouble();
@@ -98,36 +85,41 @@ public class Scenario{
             case 5:
                 System.out.println("Enter 'true' to convert meters to feet or 'false' to convert feet to meters");
                 checker = sc.nextBoolean();
-                if(fileChecker == true){
+                if(enterChecker == true){
                     pInputDoub = metersNFeet(pInputDoub, checker);
                     System.out.println(pInputDoub);
+                    valArray[0] = pInputDoub;
                 }
                 else{
                     for(int i = 0; i < valArray.length; i++){
-                        pInputDoub = metersNFeet(valArray[i], checker);
-                        if(pInputDoub >= 0){
-                            System.out.println(pInputDoub);
+                        valArray[i] = metersNFeet(valArray[i], checker);
+                        if(valArray[i] < 0){
+                            valArray[i] = 0;
                         }
-                        
+                    System.out.println(valArray[i]);    
                     }
                 }
-                
+                writeOneRow("OutputFile.csv", valArray);
             break;
             case 6:
                 System.out.println("Enter 'true' to convert centimeters to inches or 'false' to convert inches to centimeters");
                 checker = sc.nextBoolean();
-                if(fileChecker == true){
+                if(enterChecker == true){
                     pInputDoub = centiNInches(pInputDoub, checker);
                     System.out.println(pInputDoub);
+                    valArray[0] = pInputDoub;
                 }
                 else{
                     for(int i = 0; i < valArray.length; i++){
-                        pInputDoub = centiNInches(valArray[i], checker);
-                        if(pInputDoub >= 0){
-                            System.out.println(pInputDoub);
+                        valArray[i] = centiNInches(valArray[i], checker);
+                        if(valArray[i] < 0){
+                            valArray[i] = 0;
                         }
+                    System.out.println(valArray[i]);
                     }
+                    
                 }
+                writeOneRow("OutputFile.csv", valArray);
             break;
             default:
 
@@ -239,5 +231,20 @@ public class Scenario{
         }
 
     return valArray;
+    }
+
+    public static void writeOneRow(String pFilename, double[] pValArray){
+        FileOutputStream fileStrm = null;
+        PrintWriter pw;
+        try {
+            fileStrm = new FileOutputStream(pFilename);
+            pw = new PrintWriter(fileStrm);
+            for(int i = 0 ;i < pValArray.length; i ++){
+                pw.println(pValArray[i] + " ");
+            }
+            pw.close();
+        } catch (IOException e) {
+            System.out.println("Error in writing to file" + e.getMessage());
+        }
     }
 }
