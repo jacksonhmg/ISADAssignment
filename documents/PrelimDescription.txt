@@ -28,10 +28,10 @@ module: remove any numeric values from a given array and then convert the string
     the newString is returned
 
 module: converting meters to feet and vice versa
-    function name = meterNFeet
+    function name = metersNFeet
     takes two parameters: pInputDoub and boolean checker
-    if the checker is true itll assume the double is in meters and will convert to feet (* 3.28)
-    if the checker is false itll assume the double is in feet and will convert to meters (/ 3.28)
+    if the checker is true itll assume the double is in meters and will convert to feet (* 3.281)
+    if the checker is false itll assume the double is in feet and will convert to meters (/ 3.281)
     return the result
 
 module: converting centimeters to inches and vice versa
@@ -58,4 +58,20 @@ module: for all menu control
     outputs options of menu to user by printing to console
     takes input from user and uses that to do one of multiple options using the above functions
     prints the outcome of the users choice to the console
+
+module: Identify whether numeric values are in a given string
+    function name: numericFilter
+    takes one parameter: pInputString (input by user)
+    turns the string into an array of characters
+    loop through character array and add +1 to a counter if a character is a numeric value
+    !return the counter value! (the revision)
+
+module: Identify whether a given string is a valid number or not
+    function name: numberChecker
+    takes one parameter: pInputString (input by user)
+    parses an !double! of the given string
+    !if its not a double, itll return -1!
+    !if it is, itll return the valid number!
+
+
     
