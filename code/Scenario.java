@@ -58,7 +58,13 @@ public class Scenario{
             case 1:
                 System.out.println("Enter 'true' to convert to uppercase or 'false' to convert to lower case");
                 checker = sc.nextBoolean();
-                pInputString = convertString(pInputString, checker);
+                if(checker == true){
+                    pInputString = stringUpper(pInputString);
+                }
+                else if(checker == false){
+                    pInputString = stringLower(pInputString);
+                }
+                
                 System.out.println(pInputString);
             break;
             case 2:
@@ -86,13 +92,25 @@ public class Scenario{
                 System.out.println("Enter 'true' to convert meters to feet or 'false' to convert feet to meters");
                 checker = sc.nextBoolean();
                 if(enterChecker == true){
-                    pInputDoub = metersNFeet(pInputDoub, checker);
+                    if(checker == true){
+                        pInputDoub = metersToFeet(pInputDoub);
+                    }
+                    else if(checker == false){
+                        pInputDoub = feetToMeters(pInputDoub);
+                    }
+                    
                     System.out.println(pInputDoub);
                     valArray[0] = pInputDoub;
                 }
                 else{
                     for(int i = 0; i < valArray.length; i++){
-                        valArray[i] = metersNFeet(valArray[i], checker);
+                        if(checker == true){
+                            valArray[i] = metersToFeet(valArray[i]);
+                        }
+                        else if(checker == false){
+                            valArray[i] = feetToMeters(valArray[i]);
+                        }
+                        
                         if(valArray[i] < 0){
                             valArray[i] = 0;
                         }
@@ -105,13 +123,24 @@ public class Scenario{
                 System.out.println("Enter 'true' to convert centimeters to inches or 'false' to convert inches to centimeters");
                 checker = sc.nextBoolean();
                 if(enterChecker == true){
-                    pInputDoub = centiNInches(pInputDoub, checker);
+                    if(checker == true){
+                        pInputDoub = centiToInches(pInputDoub);
+                    }
+                    else if(checker == false){
+                        pInputDoub = inchesToCenti(pInputDoub);
+                    }
                     System.out.println(pInputDoub);
                     valArray[0] = pInputDoub;
                 }
                 else{
                     for(int i = 0; i < valArray.length; i++){
-                        valArray[i] = centiNInches(valArray[i], checker);
+                        if(checker == true){
+                            valArray[i] = centiToInches(valArray[i]);
+                        }
+                        else if(checker == false){
+                            valArray[i] = inchesToCenti(valArray[i]);
+                        }
+                        
                         if(valArray[i] < 0){
                             valArray[i] = 0;
                         }
@@ -130,16 +159,18 @@ public class Scenario{
     }
 
 
-    public static String convertString(String pInputString, boolean checker){
-        if(checker == true){
-            pInputString = pInputString.toUpperCase();
-        }
-        else{
-            pInputString = pInputString.toLowerCase();
-        }
+    public static String stringUpper(String pInputString){
+        pInputString = pInputString.toUpperCase();
         
         return pInputString;
     }
+
+    public static String stringLower(String pInputString){
+        pInputString = pInputString.toLowerCase();
+        
+        return pInputString;
+    }
+
 
     public static int numericFilter(String pInputString){
         char[] charArray = pInputString.toCharArray();
@@ -154,50 +185,55 @@ public class Scenario{
 
 
     public static double numberChecker(String pInputString){
-        try{
-            double x = Double.parseDouble(pInputString);
-            return x;
-        }catch (NumberFormatException ex){
-            return -1;
-        }
+        double x = Double.parseDouble(pInputString);
+        return x;
     }
 
     public static String removeNConvert(String pInputString, boolean checker){
         String result = "";
         char[] charArray = pInputString.toCharArray();
+        String newString;
         for(int i = 0; i < charArray.length; i++){
             if(!(Character.isDigit(charArray[i]))){
                 result += charArray[i];
             }
         }
-        String newString = convertString(String.valueOf(result), checker);
+        if(checker == true){
+            newString = stringUpper(String.valueOf(result));
+        }
+        else{
+            newString = stringLower(String.valueOf(result));
+        }
+        
 
         return newString;
     }
 
 
-    public static double metersNFeet(double pInputDoub, boolean checker){
-        double result = 0;
-        if(checker == true){ //meters to feet
-            result = (pInputDoub * 3.281);
-        }
-        else{
-            result = (pInputDoub / 3.281);
-        }
-        
+    public static double feetToMeters(double pInputDoub){
+        double result;
+        result = (pInputDoub / 3.281);
         return result;
     }
 
-    public static double centiNInches(double pInputDoub, boolean checker){
-        double result = 0;
-        
-        if(checker == true){ //centimeters to inches
-            result = (pInputDoub / 2.54);
-        }
-        else{
-            result = (pInputDoub * 2.54);
-        }
 
+    public static double metersToFeet(double pInputDoub){
+        double result;
+        result = (pInputDoub * 3.281); 
+        return result;
+    }
+
+
+    public static double centiToInches(double pInputDoub){
+        double result;
+        result = (pInputDoub / 2.54);
+        return result;
+    }
+
+
+    public static double inchesToCenti(double pInputDoub){
+        double result;
+        result = (pInputDoub * 2.54);
         return result;
     }
 

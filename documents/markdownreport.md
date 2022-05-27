@@ -108,7 +108,8 @@ Whilst many of the methods have specific try catch statements, a lot of the time
 
 ## Modularity
 #### Description on how to run my code
-When you first open the code, you'll be prompted with the first menu: ![image](https://images2.imgbox.com/16/ca/JI19dGz1_o.png)
+When you first open the code, you'll be prompted with the first menu:
+![image](https://images2.imgbox.com/16/ca/JI19dGz1_o.png)
 You are then prompted to enter your choice (as seen by the cursor underneath the options). To choose an option, enter the digit in front of the explanation. For example, if I wanted to convert a string to upper or lower case, I would enter 1.
 In the first four options, you'll be asked to enter a string or for the last two options, you'll be asked to enter a double. Enter normally using the terminal line.
 In some of the options where you can further choose between two options (i.e. convert a string to upper or lower case, convert centimeters to inches and vice versa), you will be prompted with another menu to ask what you want to be done with the value you have entered:
@@ -122,6 +123,18 @@ Full example:
 ![image](https://images2.imgbox.com/3a/d3/U99H8ABR_o.png)
 
 #### Discussion on different modularity concepts applied
+used method in a method to reduce redundancy/repetition and to prove usability. even tho it creates coupling
+topics: coupling, global variables, control flags, cohesion
+There are roughly 3 loose concepts I want to address in this topic; cohesion, couping and redundancy/repitition. I'll elaborate to discuss how I implemented or avoided these concepts within my code.
+
+##### Cohesion:
+To allow my code to be cohesive, I created a separate method for each of the cateogory specifications given to us (i.e. converting a string to upper or lower case, identifying whether numeric values are in a given string, etc). All of the code required to transform a given variable is contained entirely within that method. These methods are all labelled in a way that is easy to understand for any reader (i.e. convertString, numericFilter, removeNConvert, metersNFeet). This also applies for any variable created (i.e. pInputString, belowZeroChecker, counter, valArray). Whilst I did use control flags within my code, which is discouraged in most cases, I believe it did not impact my cohesion. The only control flags used within my code are for a maximum of two options in a method, both opposite to one another and within a specific topic (i.e. meters to feet or feet to meters, string to upper case or lower case). I believe this level of control flags is justified in being viable due to reducing repetition in code and the level of cohesion it maintains. All that is within these methods is purely conversion, there is no print statements or type casting done, all that is handled within the 'main' method and the rest are left to do pure calculation. This reduces the amount of unrelated tasks within a method. Similarly, there is a maximum of two variables imported as parameters per method, one of which being a boolean to swap between what to do with the first variable (i.e. a boolean checking whether to swap the string into uppercase or lowercase). This reduces the amount of 'different data' handled per method. 
+
+##### Coupling
+As previously mentioned, to reduce coupling there is a maximum of two parameters per method. This reduces the amount of calls per method. On that point, there is one point within the code where a calculation method calls upon another calculation method to perform its overall task, which is usually discouraged. This is within the "removeNConvert" method where "convertString" is called at the end. Whilst this is usually discouraged, I believe this one case is justified. As mentioned within the unit, there is a constant balancing act between maximising 'reuse' and minimising 'coupling'. In order to reduce redundancy and increase reuse within my code, I decided to utilise a pre-existing method in 'removeNConvert' so that there was no unneccessary duplication.
+To decrease coupling, there was no global variables used throughout the entire code.
+
+
 
 
     
