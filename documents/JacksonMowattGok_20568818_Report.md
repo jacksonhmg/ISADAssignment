@@ -6,7 +6,7 @@ By Jackson Mowatt Gok,
 Practical Class: Thursdays/8am-10am/Venue
 
 ## Introduction
-In total I have 4 necessary files for my code. One of these is "Scenario.java" which is the main code that has the method creations inside, another is the test case file "ScenarioTestCases.java" that utilises JUnit and my main code, another is "values.csv" which is the example file I use for reading a file, and the last is "OutputFile.csv" which is the example file I use for writing to a file. Within the Scenario.java file, I have 12 separate methods/functions. These are my "main" method which controls the menu system, the next 9 methods are the 'calculation/conversion methods' which address the problems addressed in "Category 1 and 2" in the assessment outline and my final two methods control reading and writing to a file. The code works so that there is a menu system which the user operates through by entering their choice into the system. They first, choose any of the operations specified in the "Categories" from the assessment outline, they then then enter an input or sometimes, depending on their choice, have the option to use a separate file's predetermined values and finally their input is then run through the operation of their choosing and the output is printed to the user and sometimes, depending on their choice, written to the "OutputFile.csv" file. Within each of these methods there is further functionality, which I'll discuss in later sections.
+In total I have 4 necessary files for my code. One of these is "Scenario.java" which is the main code that has the method creations inside, another is the test case file "ScenarioTestCases.java" that utilises JUnit and my main code, another is "values.csv" which is the example file I use for reading a file, and the last is "OutputFile.csv" which is the example file I use for writing to a file. Within the Scenario.java file, I have 12 separate methods/functions. These are my "main" method which controls the menu system, the next 9 methods are the 'calculation/conversion methods' which address the problems addressed in "Category 1" and " Category 2 part a" in the assessment outline and my final two methods control reading and writing to a file. The code works so that there is a menu system which the user operates through by entering their choice into the system. They first, choose any of the operations specified in the "Categories" from the assessment outline, they then then enter an input or sometimes, depending on their choice, have the option to use a separate file's predetermined values and finally their input is then run through the operation of their choosing and the output is printed to the user and sometimes, depending on their choice, written to the "OutputFile.csv" file. Within each of these methods there is further functionality, which I'll discuss in later sections.
 
 ## Module Descriptions
 #### Original Ideas of modules:
@@ -163,12 +163,16 @@ Whilst many of the methods have specific try catch statements, a lot of the time
 
 ## Modularity
 #### Description on how to run my code
-When you first open the code, you'll be prompted with the first menu:
+First, enter the 'code' folder.
+
+When you first run the main code, 'Scenario.java', you'll be prompted with the first menu:
 ![image](https://images2.imgbox.com/16/ca/JI19dGz1_o.png)
+
 You are then prompted to enter your choice (as seen by the cursor underneath the options). To choose an option, enter the digit in front of the explanation. For example, if I wanted to convert a string to upper or lower case, I would enter 1.
 In the first four options, you'll be asked to enter a string or for the last two options, you'll be asked to enter a double. Enter normally using the terminal line.
 In some of the options where you can further choose between two options (i.e. convert a string to upper or lower case, convert centimeters to inches and vice versa), you will be prompted with another menu to ask what you want to be done with the value you have entered:
 ![image](https://images2.imgbox.com/4c/ad/po9bhyJ5_o.png)
+
 In these scenarios, read the prompt carefully and make your choice accordingly. The "true" and "false" options can be entered in upper/lower or mixed case.
 Finally, on the last two options on the first menu, you will be prompted with another menu asking if you want to enter your own values or use the given csv file:
 ![image](https://images2.imgbox.com/d5/b0/zfTDWBGS_o.png).
@@ -258,7 +262,8 @@ It's important to mention that for numericChecker there is two separate testing 
 My two methods used for white box testing are my 'readFile' and 'writeOneRow' methods. 
 
 For 'readFile' the test case was inputting an invalid file name. This was done manually in the code and not through JUnit. As can be seen here: 
-![image](https://images2.imgbox.com/ff/ed/gxktQZsv_o.png). 
+![image](https://images2.imgbox.com/ff/ed/gxktQZsv_o.png) 
+
 "values.csv" is spelt incorrectly and so the code won't recognise it.
 Then, as expected in this line of code within readFile:
 ![image](https://images2.imgbox.com/54/b0/7mLigXFc_o.png), the incorrect file name will supposedly trigger this catch statement.
@@ -273,11 +278,14 @@ Implementing these test cases leads exactly to that result, executing as expecte
 
 
 ## Test implementation and execution
-To run all my black box testing, all that is needed is to run the JUnit tests within the 'ScenarioTestCases.java' file. This file includes every black box test case discussed. How to run this file will depend on what interface you use. For me, on Visual Studio Code, I click the small green tick next to line 10 'public class ScenarioTestCases' which will automatically run all the JUnit tests using Visual Studio Code's in built functions. This layout can be seen in the following screenshot:
+To run all my black box testing, all that is needed is to run the JUnit tests within the 'ScenarioTestCases.java' file. This file includes every black box test case discussed. How to run this file will depend on what interface you use. For me, on Visual Studio Code, I specifically open the 'code' folder and click the small green tick next to line 10 'public class ScenarioTestCases' which will automatically run all the JUnit tests using Visual Studio Code's in built functions. This layout can be seen in the following screenshot:
 ![image](https://images2.imgbox.com/04/e0/EgrBMGuX_o.png). The green ticks are on the left of the line numbers.
 For someone on a Unix terminal system, you would need to run the necessary JUnit compilers and runners to run this code. This would look something like:
+
 $ javac -cp junit-path ScenarioTestCases.java
+
 $ java -cp junit-path org.junit.runner.JUnitCore ScenarioTestCases
+
 Where junit-path is replaced with the path of the file in your computers directories.
 
 To run all my white box testing, all that is needed is to edit two lines. This have been demonstrated above but I'll elaborate further. To white box test the 'readFile' file, go to line 53 'valArray = readFile("values.csv");' and change values.csv to vales.csv. After this, run the code and enter '5' on the first menu. On the second input, enter 'false' and then you will get the desired test case as the error statement prints.
@@ -288,7 +296,9 @@ On the first test implementation, every test case went through perfectly except 
 
 ##### Table
 **For this table, I will not copy verbatim what is in my "ScenarioTestCases.java" JUnit file for the sake of redundancy. I will, however, copy the main points across, which can be cross referenced with a JUnit file if necessary.** 
-|Module name | BB test design (EP) | BB test design (BVA) | WB test design | EP test code (implemented/run) | BVA test code (implemented/run) | White-Box testing (implemented/run)
+
+
+| Module name | BB test design (EP) | BB test design (BVA) | WB test design | EP test code (implemented/run) | BVA test code (implemented/run) | White-Box testing (implemented/run)
 | ------------ | -------- | ----- | ------- | ------| ------ | ------ |
 | stringUpper | done | not done | not done | assertEquals("yep","JACKSON MOWATT GOK", Scenario.stringUpper("Jackson Mowatt Gok")); assertEquals("yep","MOWATT GOK", Scenario.stringUpper("MOWATT GOK")); assertEquals("yep","INTERSTELLAR", Scenario.stringUpper("interstellar")); assertEquals("yep","8818", Scenario.stringUpper("8818")); | 
 | stringLower | done | not done | not done | assertEquals("yep","jackson mowatt gok", Scenario.stringLower("Jackson Mowatt Gok")); assertEquals("yep","mowatt gok", Scenario.stringLower("MOWATT GOK")); assertEquals("yep","interstellar", Scenario.stringLower("interstellar")); assertEquals("yep","8818", Scenario.stringLower("8818")); |
@@ -305,8 +315,129 @@ On the first test implementation, every test case went through perfectly except 
 
 
 
+## Version Control
+For this assignment, I used Git.
+It's important to mention that in one of the git commits, there is reference to a remote repo. This is already addressed within the commit 7c90c3e but I will address it again here, that is a private repo held just for me to access these files across multiple computers. The private remote repo is at https://github.com/jacksonhmg/ISADAssignment. Of course, if you are not me, you won't be able to access it, but I put the link as proof of concept.
+Here is the screenshot of my git log:
+![image](https://images2.imgbox.com/93/61/yXyxOOjC_o.png)
+
+And here is the text version of the git log:
+commit 012561256fdd7d7114eda8c6b5daeb761fac7a6d
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Sun May 29 11:40:32 2022 +0800
+
+    final clean up of all the files
+
+commit 96f2f9afb5d043f74f4ae0ef423d2a8338bed33b
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Fri May 27 19:52:48 2022 +0800
+
+    separated all control flags except for removeNConvert. need to redo test cases tho
+
+commit 6999e66870afb6a4161cc1b0cd4e9527a76f6041
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Wed May 25 00:06:50 2022 +0800
+
+    Started markdownreport up until discussion on modularity concepts applied
+
+commit 904ea25f24604f3d8ce999e212d9b583b3e2659c
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 24 13:40:41 2022 +0800
+
+    added file writing
+
+commit 835eb61ea6484b8261e59b3c4365a1bf9361e4bb
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 24 12:19:51 2022 +0800
+
+    finished all of ScenarioTestCase (black box testing)
+
+commit ed9e56c59305ffb6bdc5d8cc062a43745a914e48
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 24 11:18:57 2022 +0800
+
+    fixed numericFilter and numberChecker to have returns
+
+commit 4b21c1c761b9da0752443147953233c7a232de3c
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 24 11:13:28 2022 +0800
+
+    started test cases
+
+commit 765d74e8380a7fda24c006fb18dfe1fa04c0b871
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Sun May 22 11:08:21 2022 +0800
+
+    optimised a bit. added file reading to category 2.
+
+commit 7c90c3ec3e49431d1aaccd85781ae69ab629b076
+Merge: d6cf252 a4536c5
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Fri May 20 19:20:56 2022 +0800
+
+    There was a problem because a renamed a commit. so now im merging branch 'main' of https://github.com/jacksonhmg/ISADAssignment. THIS IS A PRIVATE REPO HELD JUST FOR ME TO BE ABLE TO ACCESS MY FILES FROM ANY COMPUTER
+
+commit d6cf2527d2adabb0c62e6d7e8aee269f5f7a4697
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Fri May 20 19:20:13 2022 +0800
+
+    moved documents into documents folder
+
+commit 3a7f5f5f97990c157117476ea944fd6e4fc6aa4f
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Fri May 20 19:15:29 2022 +0800
+
+    got working draft of entire Scenario.java. could clean up some duplication, but everything works
+
+commit a4536c5d8e1b48a05a4165f9118ab1d68c8eab29
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Fri May 20 19:15:29 2022 +0800
+
+    got working draft of entire Scenario.java. might need cleaning up not sure, but everything works
+
+commit 8a6a0529706995d6f6f028d73ad5fa8a4632dc9b
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Fri May 20 18:14:39 2022 +0800
+
+    created PrelimDescription and completed
+
+commit e830f61795b70e27c8e1772aa05bac0ffea215ea
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 17 13:55:09 2022 +0800
+
+    wrote outline of six methods from categories
+
+commit 55e5d3f7391fb1c04f726d7e129f49d978ee9741
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 17 12:56:15 2022 +0800
+
+    created code directory
+
+commit a8d8c6964518a2ea91f9267b44a52d9b752f0768
+Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
+Date:   Tue May 17 12:51:57 2022 +0800
+
+    just started writing pseudo for convertString and numericFilter
 
 
+## Ethics and Professionalism
+##### How lack of ethics and professionalism can result in harmful effects using my code
+After researching through the unit's content, I have concluded that there are two main ways in which harmful effects can result from my code. These can conveniently be splitted into lack of ethics and lack of professionalism. 
+
+For lack of ethics, a software developer having a lack of ethics can range from being complacent to being involved in unethical companies. Both of these, of course. can be extremely harmful for the public. For example, considering most of the code has to do with filtering and editing strings, my code could be used for something unethical like scraping through exploited/hacked emails. This creates a harmful result as I would then be assisting in a crime and would be harming the public potentially financially psychologically. 
+
+Another example, more on the side of complacence side, could relate to my distance conversion methods (metersToFeet, feetToMeters, centiToInches, inchesToCenti). If I was to be unethical in a way more subtle, not accurately pay attention to the methods, not do any testing and ship the code without knowing 100% that it works 100% of the time. That could have major repurcusssions. If that faulty distance converter was then used for a self-driving car that needed pin-point accurate measurements, that could cause the car to crash, steer off track or worse. This would result in physical, financial and psychological harm for a user.
+
+For lack of professionalism, this is more subtle. A lack of professionalism relates more to a work-place environment and the harm that can be caused there. An example could be failing to communicate the purpose of your code well, such as not labelling variables well or not leaving descriptive comments. This would lead to psychological harm to your fellow team members as they struggle to understand. It could potentially lead to harm to outside users if team members misunderstand and try to use your code in a place that doesn't make sense.
+
+##### Two suggestions to avoid ethical and professional issues in my software proposed in this assignment
+Following the IEEE CS ethical guidelines I would give these two suggestions:
+- Follow the PRODUCT rule. This means ensuring that all products are up the highest professional standards. This ensures that there could be little to no room for error on the coding side and that you have held your ethical integrity.
+- Follow the COLLEAGUES rule. This means to be fair and helpful to any colleagues you may have. An example would be to be communicative about what you're working on, how it works and how to incorporate it into their work.
+
+
+## Discussion
+On a final note, I belive my code is up to par for the requirements. In the future, with more time available, I potentially could've added more flexibility within the code. Something akin to catching every input error in a way that doesn't affect the menu system. Overall though, I am proud of the work and ingenuity that went into this assignment. Thank you for your time.
 
 
 
