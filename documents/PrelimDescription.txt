@@ -1,17 +1,20 @@
-module: converting string to upper or lower case
+module: converting string to upper or lower case  
+
     function name: convertString
     takes two parameters: pInputString (input by user) and a boolean checker to swap between upper or lower case
     returns pInputString in whatever chosen format determined by user (upper or lower case)
 
 
-module: Identify whether numeric values are in a given string
+module: Identify whether numeric values are in a given string  
+
     function name: numericFilter
     takes one parameter: pInputString (input by user)
     turns the string into an array of characters
     loop through character array and add +1 to a counter if a character is a numeric value
     print out how many numeric values are in the array
 
-module: Identify whether a given string is a valid number or not
+module: Identify whether a given string is a valid number or not  
+
     function name: numberChecker
     takes one parameter: pInputString (input by user)
     parses an integer of the given string
@@ -19,7 +22,8 @@ module: Identify whether a given string is a valid number or not
     if it is, itll print and tell you
 
 
-module: remove any numeric values from a given array and then convert the string to upper or lower case
+module: remove any numeric values from a given array and then convert the string to upper or lower case  
+
     function name: removeNConvert
     takes two parameters: pInputString (input by user) and a boolean checker 
     takes pInputString and turns it into a character array
@@ -27,14 +31,16 @@ module: remove any numeric values from a given array and then convert the string
     then that new array is converted back to string and plugged into convertString along with the boolean checker
     the newString is returned
 
-module: converting meters to feet and vice versa
+module: converting meters to feet and vice versa  
+
     function name = metersNFeet
     takes two parameters: pInputDoub and boolean checker
     if the checker is true itll assume the double is in meters and will convert to feet (* 3.281)
     if the checker is false itll assume the double is in feet and will convert to meters (/ 3.281)
     return the result
 
-module: converting centimeters to inches and vice versa
+module: converting centimeters to inches and vice versa  
+
     function name = centiNInches
     takes two parameters: pInputDoub and boolean checker
     if the checker is true itll assume the double is in centimeters and will convert to inches (/ 2.54)
@@ -42,10 +48,9 @@ module: converting centimeters to inches and vice versa
     return the result
 
 
-REVISED MODULE DESCRIPTIONS:
 
+module: for reading files  
 
-module: for reading files
     function name = readFile
     takes one parameter: pFileName
     creates all necessary file reading variables: file stream, InputStreamReader, BufferedReader and something that reads the line of the BufferedReader
@@ -53,25 +58,90 @@ module: for reading files
     converts the strings from the line into doubles
     returns the doubles
 
-module: for all menu control
+module: for writing to files  
+
+    function name = writeOneRow
+    takes one parameter: pFileName, double array pValArray
+    creates all necessary file writing variables: file stream, print writer
+    for each value in the array, print that to the file, separated by a space
+    close the print writer
+
+
+module: for all menu control  
+
     function name: main
     outputs options of menu to user by printing to console
     takes input from user and uses that to do one of multiple options using the above functions
     prints the outcome of the users choice to the console
 
-module: Identify whether numeric values are in a given string
+#### REVISED MODULE DESCRIPTIONS:
+module: converting string to upper or lower case **HAS NOW BEEN SPLIT INTO TWO METHODS**:
+
+module: converting string to upper case
+
+    function name: stringUpper
+    takes one parameter: pInputString
+    returns pInputString in uppercase
+
+module: converting string to lower case
+
+    function name: stringLower
+    takes one parameter: pInputString
+    returns pInputString in lowercase
+ 
+module: Identify whether numeric values are in a given string.  **See last line for revision**
+
     function name: numericFilter
     takes one parameter: pInputString (input by user)
     turns the string into an array of characters
     loop through character array and add +1 to a counter if a character is a numeric value
-    !return the counter value! (the revision)
+    return the counter value (the revision)
 
-module: Identify whether a given string is a valid number or not
+module: Identify whether a given string is a valid number or not. **See 3rd and 4th line for revision**
+    
     function name: numberChecker
     takes one parameter: pInputString (input by user)
-    parses an !double! of the given string
-    !if its not a double, itll return -1!
-    !if it is, itll return the valid number!
-
-
+    parses an double (revision) of the given string
+    returns double (revision)
     
+module: remove any numeric values from a given array and then convert the string to upper or lower case **See second last line for revision**
+
+    function name: removeNConvert
+    takes two parameters: pInputString (input by user) and a boolean checker 
+    takes pInputString and turns it into a character array
+    loops through the array and whatever elements are not numeric values are added to a new array
+    then that new array is converted back to string and plugged into either stringUpper or stringLower depending on boolean (revision)
+    the newString is returned
+
+module: converting meters to feet and vice versa **HAS NOW BEEN SPLIT INTO TWO METHODS**:
+
+module: convert meters to feet
+
+    function name = metersToFeet
+    takes one parameter: pInputDoub
+    multiply pInputDoub by 3.281
+    return the result
+
+module: convert feet to meters
+
+    function name = feetToMeters
+    takes one parameter: pInputDoub
+    divide pInputDoub by 3.281
+    return the result
+
+module: converting centimeters to inches and vice versa **HAS NOW BEEN SPLIT INTO TWO METHODS**:
+
+module: convert centimeters to inches
+
+    function name = centiToInches
+    takes one parameter: pInputDoub
+    divide pInputDoub by 2.54
+    return the result
+
+module: convert inches to centimeters
+
+    function name = inchesToCenti
+    takes one parameter: pInputDoub
+    multiply pInputDoub by 2.54
+    return the result
+

@@ -213,6 +213,9 @@ public class Scenario{
     public static double feetToMeters(double pInputDoub){
         double result;
         result = (pInputDoub / 3.281);
+        if(result < 0){
+            result = 0;
+        }
         return result;
     }
 
@@ -220,6 +223,9 @@ public class Scenario{
     public static double metersToFeet(double pInputDoub){
         double result;
         result = (pInputDoub * 3.281); 
+        if(result < 0){
+            result = 0;
+        }
         return result;
     }
 
@@ -227,6 +233,9 @@ public class Scenario{
     public static double centiToInches(double pInputDoub){
         double result;
         result = (pInputDoub / 2.54);
+        if(result < 0){
+            result = 0;
+        }
         return result;
     }
 
@@ -234,6 +243,9 @@ public class Scenario{
     public static double inchesToCenti(double pInputDoub){
         double result;
         result = (pInputDoub * 2.54);
+        if(result < 0){
+            result = 0;
+        }
         return result;
     }
 
