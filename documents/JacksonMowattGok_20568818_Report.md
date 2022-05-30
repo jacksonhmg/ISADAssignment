@@ -1,9 +1,14 @@
 # ISE Final Assessment Report
 
+
+
 By Jackson Mowatt Gok, 
 20568818
 
-Practical Class: Thursdays/8am-10am/Venue
+Practical Class: Thursdays/8am-10am/314.218
+
+**Note : Apologies for the stretched pages, this had to be the layout in order to fit the 'Test implementation and execution' table**
+
 
 ## Introduction
 In total I have 4 necessary files for my code. One of these is "Scenario.java" which is the main code that has the method creations inside, another is the test case file "ScenarioTestCases.java" that utilises JUnit and my main code, another is "values.csv" which is the example file I use for reading a file, and the last is "OutputFile.csv" which is the example file I use for writing to a file. Within the Scenario.java file, I have 12 separate methods/functions. These are my "main" method which controls the menu system, the next 9 methods are the 'calculation/conversion methods' which address the problems addressed in "Category 1" and " Category 2 part a" in the assessment outline and my final two methods control reading and writing to a file. The code works so that there is a menu system which the user operates through by entering their choice into the system. They first, choose any of the operations specified in the "Categories" from the assessment outline, they then then enter an input or sometimes, depending on their choice, have the option to use a separate file's predetermined values and finally their input is then run through the operation of their choosing and the output is printed to the user and sometimes, depending on their choice, written to the "OutputFile.csv" file. Within each of these methods there is further functionality, which I'll discuss in later sections.
@@ -198,7 +203,7 @@ Checklist contained:
 - No global variables
 - Low number of calls per method
 - Reduce control flags as much as possible
-- One purpose per method (no 'different data')
+- One main purpose per method (no 'different data')
 
 This checklist impacted the way I went about writing my code and even forced me to go back and refactor a lot of it. Having the idea of the checklist in mind, I refrained from global variables and kept calls low. However I did not notice the amount of control flags I was putting in my code. After creating the checklist and comparing it with my code, I decided to refactor it in accordance with my control flag rule. This can be seen in the git log (git hash 96f2f9a). Of course, I left one minor control flag in the code but this has been justified previously in this report.
 
@@ -322,6 +327,7 @@ Here is the screenshot of my git log:
 ![image](https://images2.imgbox.com/93/61/yXyxOOjC_o.png)
 
 And here is the text version of the git log:
+
 commit 012561256fdd7d7114eda8c6b5daeb761fac7a6d
 Author: Jackson Mowatt Gok <jacksonmowattgok@gmail.com>
 Date:   Sun May 29 11:40:32 2022 +0800
